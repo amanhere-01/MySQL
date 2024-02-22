@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS WannaChat;
 CREATE DATABASE WannaChat;
 use WannaChat;
 
@@ -22,6 +23,8 @@ INSERT INTO users
 INSERT INTO users VALUES(6,'Faith','cvbn', '9821652151', 23, 'F', 0);
 INSERT INTO users VALUES(7,'Aitch','poiu', '9345652151', 23, 'M', 0);
 INSERT INTO users VALUES(8,'John','tree', '9345657651', 27, 'M', 1);
+INSERT INTO users VALUES(9,'Jenny','cvb12', '9345657651', 30, NULL, 1);
+INSERT INTO users VALUES(10,'Mimi','456', NULL, 36, NULL, 0);
 
 SELECT id,name as "UserName",age,  status FROM users;
 SELECT * FROM users;
@@ -62,6 +65,21 @@ SELECT * FROM users ORDER BY age DESC;
 # Picking distinct(unique) element
 SELECT DISTINCT age FROM users;
 SELECT DISTINCT age FROM users ORDER BY age ASC;
+
+# IS NULL and IS NOT NULL Operators
+SELECT *  FROM users WHERE gender IS NULL;
+SELECT *  FROM users WHERE gender IS NOT NULL ;
+SELECT *  FROM users WHERE gender IS NULL AND contact IS NULL;
+
+# Limit and Offset
+# Indexing of tuples starts from 0 like array  
+SELECT * FROM users LIMIT 5;	-- will return the first five data
+SELECT * FROM users ORDER BY name ASC LIMIT 5;	-- will sort the tuples first and then return the first five tuples
+SELECT * FROM users WHERE age>25 LIMIT 5;	
+#	Limit will give data from 0th row but to get from particular row we use OFFSET
+SELECT * FROM users;
+SELECT * FROM users LIMIT 5;
+SELECT * FROM users LIMIT 4 OFFSET 2;	-- it will give first 4 data from 3rd row(offset+1)
 
 
 
