@@ -6,7 +6,11 @@ CREATE TABLE player(
 );
 
 INSERT INTO player VALUES(101, 'ChiconyPlays');
-INSERT INTO player (id, name) VALUES (301, 'NoobAtMission');	
+
+INSERT INTO player 
+	(id, name) VALUES 
+		(301, 'NoobAtMission'),
+        (401, 'Zerkaa');
 	
 SELECT * FROM player;
 DESC player;
