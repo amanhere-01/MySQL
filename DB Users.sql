@@ -41,7 +41,7 @@ SELECT * FROM users WHERE NOT age=18;
 SELECT * FROM users WHERE NOT age=18 AND NOT age =16;
 
 SELECT * FROM users WHERE age=18 OR age =16 OR age =21;
-SELECT * FROM users WHERE age IN(18,16,21);
+SELECT * FROM users WHERE age IN(18,16,21);	# Instead of writing multiple OR we can use IN 
 
 -- WILDCARDS 
 -- % denotes any number of character(including 0 character)
@@ -77,21 +77,36 @@ SELECT * FROM users LIMIT 5;	-- will return the first five data
 SELECT * FROM users ORDER BY name ASC LIMIT 5;	-- will sort the tuples first and then return the first five tuples
 SELECT * FROM users WHERE age>25 LIMIT 5;	
 #	Limit will give data from 0th row but to get from particular row we use OFFSET
-SELECT * FROM users;
+
 SELECT * FROM users LIMIT 5;
 SELECT * FROM users LIMIT 4 OFFSET 2;	-- it will give first 4 data from 3rd row(offset+1)
 
+# Aggregate function
+SELECT count(id) FROM users WHERE age>25;
+SELECT sum(age) FROM users;
+SELECT avg(age) FROM users;
+SELECT min(age) FROM users;
+SELECT max(age) FROM users;
+
+# UPDATE QUERY
+UPDATE users SET age=40 WHERE id=3;		-- To update we need to provide column which is primary key
+
+# DELETE QUERY
+DELETE FROM users WHERE id=8;
+-- Now that id 8 is deleted, we cannot assign id=8 to any other incoming row
+INSERT into users (name,password,contact,age,gender,status) VALUES ('Doker','234sdf', '9873216547',16,'F',1); 	-- id=11 will be assigned
 
 
+# COMMIT & ROLLBACK
+-- once we commit then we can't rollback...we can only rollback if the changes is not commmited yet
+-- Workbench do auto commit so we have to off that for now (Edit->Preferences->SQL Editor->SQL Execution->New coonection use auto commit mode)
+UPDATE users SET age=22 WHERE id=7;
+ROLLBACK;
+COMMIT;		# now if we commit this we can't rollback it 
 
-
-
-
-
-
-
-
-
+DELETE FROM users WHERE id=11;
+ROLLBACK;
+SELECT * FROM users;
 
 
 
