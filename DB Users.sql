@@ -99,7 +99,7 @@ INSERT into users (name,password,contact,age,gender,status) VALUES ('Doker','234
 
 # COMMIT & ROLLBACK
 -- once we commit then we can't rollback...we can only rollback if the changes is not commmited yet
--- Workbench do auto commit so we have to off that for now (Edit->Preferences->SQL Editor->SQL Execution->New coonection use auto commit mode)
+-- Workbench do auto commit so we have to off that for now (Edit->Preferences->SQL Editor->SQL Execution->New coonection use auto commit mode) and then restart it;
 UPDATE users SET age=22 WHERE id=7;
 ROLLBACK;
 COMMIT;		# now if we commit this we can't rollback it 
@@ -107,6 +107,8 @@ COMMIT;		# now if we commit this we can't rollback it
 DELETE FROM users WHERE id=11;
 ROLLBACK;
 SELECT * FROM users;
+
+
 
 
 
